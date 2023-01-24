@@ -1,0 +1,51 @@
+
+[(4.0, 2.6),
+(2.6, 2.6)
+2.7, 3.6
+5.4, 2.6
+4.1, 8.0
+4.1, 8.7
+3.0, 7.9
+3.0, 8.6
+3.1, 11.4
+4.1, 11.8
+4.1, 13.0
+3.2, 12.2
+6.5, 13.0
+8.5, 12.9
+10.2, 13.0
+6.1, 11.6
+4.1, 15.4
+10.2, 14.5
+8.9, 15.2
+10.3, 10.9
+7.0, 11.8
+7.7, 11.8
+8.9, 11.8
+]
+
+G.add_node("A", pos = (3.7,0))
+G.add_node("Stair", pos = (2,0))
+G.add_node("Elevator", pos = (2,1.5))
+G.add_node("1902", pos = (6,0))
+G.add_node("B", pos = (3.7,6))
+G.add_node("C", pos = (3.7,8))
+G.add_node("1004", pos = (3,6))
+G.add_node("1003", pos = (3,7))
+G.add_node("1002", pos = (3,10))
+G.add_node("D", pos = (3.7,10.5))
+G.add_node("E", pos = (3.7,11.5))
+G.add_node("1001", pos = (3,11))
+G.add_node("F", pos = (6,11.5))
+G.add_node("G", pos = (8,11.5))
+G.add_node("H", pos = (10.5,11.5))
+G.add_node("1006", pos = (6,10.5))
+G.add_node("1802", pos = (3.5,13.5))
+G.add_node("1012", pos = (10.5,14))
+G.add_node("1012B", pos = (8,14))
+G.add_node("1011", pos = (10,9))
+G.add_node("1007", pos = (7,10.5))
+G.add_node("1008", pos = (8, 10.5))
+G.add_node("1009", pos = (9,10.5))
+G.add_node("Cali", pos = (0,0))
+G.add_node("Cali2", pos = (12,15))
