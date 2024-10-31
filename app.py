@@ -1,4 +1,4 @@
-import matplotlib 
+import matplotlib
 matplotlib.use('Agg')
 import os
 import matplotlib.pyplot as plt
@@ -63,8 +63,8 @@ G.add_edge("G", "1008")
 
 I = nx.Graph()
 I_names = ["A", "Stair", "Elevator", "2902", "2906", "B","2001", "2002", "C", "2003", "2004",
-"D", "2007", "2008", "E", "2006", "2009", "G", "Stair2", "2909", "F", "H", "2011", "2012", 
-"2013", "2014", "I", "2016", "2017", "2018", "2019", "J", "2022", "2023", "2024", "2026", "K", 
+"D", "2007", "2008", "E", "2006", "2009", "G", "Stair2", "2909", "F", "H", "2011", "2012",
+"2013", "2014", "I", "2016", "2017", "2018", "2019", "J", "2022", "2023", "2024", "2026", "K",
 "2027", "2028", "2029", "2031", "L", "2907", "M", "2033", "2032"]
 
 I_poses = [(3.7, 2.8),(2.7, 2.8),(2.7, 3.8),(5.2, 2.6),(3.1, 4.5),(3.9, 6.0),(4.4, 6.6),(3.5, 6.1),(4.0, 8.2),(3.5, 7.9),(3.5, 8.5),(3.9, 12.1),(3.5, 11.2),(3.4, 11.9),(9.6, 12.6),
@@ -158,21 +158,21 @@ plt.clf()
 #             print(H.nodes)
 #             print(image)
 #             return send_from_directory(os.getcwd(), 'abc.png', as_attachment=True)
-        
+
 # def formatGraph():
 #     img = Image.open("/abc.png")
 #     img = img.convert("RGBA")
- 
+
 #     datas = img.getdata()
- 
+
 #     newData = []
- 
+
 #     for item in datas:
 #         if item[0] == 255 and item[1] == 255 and item[2] == 255:
 #             newData.append((255, 255, 255, 0))
 #         else:
 #             newData.append(item)
-    
+
 #     img.putdata(newData)
 #     img.save("abc.png", "PNG")
 #     print("Successful")
@@ -203,7 +203,7 @@ def floorOne(H, start, end):
     nx.draw_networkx_nodes(H, posG, nodelist=['Cali', 'Cali2'], node_color="None")
     nx.draw_networkx_edge_labels(H, posG, edge_labels=labels)
     nx.draw(H)
-def floorTwo(H, start, end):                   
+def floorTwo(H, start, end):
     for n in I.nodes(data=True):
         print(n)
         if n[0] in nx.dijkstra_path(I, start, end):
@@ -239,7 +239,7 @@ def get_route(start, end):
         #     for u, v in G.edges():
         #         if u in H.nodes and v in H.nodes:
         #             H.add_edge(u, v, weight=3, edge_color = 'black')
-            
+
         #     for n in I.nodes(data=True):
         #         print(n)
         #         if n[0] in nx.dijkstra_path(I, "Stair", end):
@@ -251,23 +251,23 @@ def get_route(start, end):
         #     H.add_node("Cali2", pos = (12,15))
     print(H.nodes())
     # os.remove('/abc.png') #prevents the image from being saved twice
-    plt.savefig('/abc.png')
+    plt.savefig('./static/abc.png')
     plt.clf()
     H.clear()
 
-    img = Image.open("/abc.png")
+    img = Image.open("./static/abc.png")
     img = img.convert("RGBA")
- 
+
     datas = img.getdata()
- 
+
     newData = []
- 
+
     for item in datas:
         if item[0] == 255 and item[1] == 255 and item[2] == 255:
             newData.append((255, 255, 255, 0))
         else:
             newData.append(item)
-    
+
     img.putdata(newData)
     img.save("abc.png", "PNG")
     print("Successful")
@@ -283,7 +283,7 @@ def get_route(start, end):
         im_new = add_margin(im, -15, 45, -70, 120, (128, 0, 64, 1))
         im_new.save('abc.png', quality=95)
     # str(nx.dijkstra_path(G, start, end)),
-    image = open('/abc.png', 'rb')
+    image = open('./static/abc.png', 'rb')
     print(image)
     return send_from_directory(os.getcwd(), 'abc.png', as_attachment=True)
 if __name__ == '__main__':
