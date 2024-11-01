@@ -1,6 +1,80 @@
 import Image from "next/image";
+import React, { useEffect, useRef } from 'react';
 
 export default function Home() {
+
+  interface USGSOverlayProps {
+    bounds: google.maps.LatLngBounds;
+    image: string;
+  }
+  
+  const USGSOverlay: React.FC<USGSOverlayProps> = ({ bounds, image }) => {
+    const overlayRef = useRef<google.maps.OverlayView | null>(null);
+  
+    useEffect(() => {
+      class CustomOverlay extends google.maps.OverlayView {
+        private bounds: google.maps.LatLngBounds;
+        private image: string;
+        private div?: HTMLElement;
+  
+        constructor(bounds: google.maps.LatLngBounds, image: string) {
+          super();
+          this.bounds = bounds;
+          this.image = image;
+        }
+  
+        onAdd() {
+          const div = document.createElement('div');
+          div.style.borderStyle = 'none';
+          div.style.borderWidth = '0px';
+          div.style.position = 'absolute';
+  
+          const img = document.createElement('img');
+          img.src = this.image;
+          img.style.width = '100%';
+          img.style.height = '100%';
+          div.appendChild(img);
+  
+          this.div = div;
+  
+          const panes = this.getPanes();
+          panes?.overlayLayer.appendChild(div);
+        }
+  
+        draw() {
+          if (!this.div) return;
+  
+          const overlayProjection = this.getProjection();
+          const sw = overlayProjection.fromLatLngToDivPixel(this.bounds.getSouthWest());
+          const ne = overlayProjection.fromLatLngToDivPixel(this.bounds.getNorthEast());
+  
+          if (sw && ne) {
+            this.div.style.left = `${sw.x}px`;
+            this.div.style.top = `${ne.y}px`;
+            this.div.style.width = `${ne.x - sw.x}px`;
+            this.div.style.height = `${sw.y - ne.y}px`;
+          }
+        }
+  
+        onRemove() {
+          if (this.div) {
+            this.div.parentNode?.removeChild(this.div);
+            this.div = undefined;
+          }
+        }
+      }
+  
+      overlayRef.current = new CustomOverlay(bounds, image);
+      overlayRef.current.setMap(window.google.maps.Map);
+  
+      return () => {
+        overlayRef.current?.setMap(null);
+      };
+    }, [bounds, image]);
+  
+    return null;
+  };
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
