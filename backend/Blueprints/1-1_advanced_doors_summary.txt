@@ -1,0 +1,51 @@
+ROOM DETECTION SUMMARY
+==================================================
+
+Total rooms detected: 5
+Total connections: 1
+
+ROOM DETAILS:
+------------------------------
+Room 0 (Room_000):
+  Center: (754, 659)
+  Area: 1757678 pixels
+  Dimensions: (np.int32(1476), np.int32(1304))
+  Type: large_room
+  Aspect ratio: 1.13
+  Bounding box: (np.int32(0), np.int32(0), np.int32(1476), np.int32(1304))
+
+Room 1 (Room_001):
+  Center: (1280, 90)
+  Area: 4301 pixels
+  Dimensions: (np.int32(98), np.int32(47))
+  Type: small_room
+  Aspect ratio: 2.09
+  Bounding box: (np.int32(1232), np.int32(67), np.int32(98), np.int32(47))
+
+Room 2 (Room_002):
+  Center: (371, 202)
+  Area: 1160 pixels
+  Dimensions: (np.int32(64), np.int32(21))
+  Type: small_room
+  Aspect ratio: 3.05
+  Bounding box: (np.int32(342), np.int32(192), np.int32(64), np.int32(21))
+
+Room 3 (Room_003):
+  Center: (163, 931)
+  Area: 4443 pixels
+  Dimensions: (np.int32(65), np.int32(80))
+  Type: small_room
+  Aspect ratio: 0.81
+  Bounding box: (np.int32(132), np.int32(892), np.int32(65), np.int32(80))
+
+Room 4 (Room_004):
+  Center: (38, 1030)
+  Area: 4497 pixels
+  Dimensions: (np.int32(48), np.int32(98))
+  Type: small_room
+  Aspect ratio: 0.49
+  Bounding box: (np.int32(15), np.int32(982), np.int32(48), np.int32(98))
+
+CONNECTIONS:
+------------------------------
+Room_003 <-> Room_004 (door, weight=159.5)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>UniMap API Test</h1>
+    <button onclick="testAPI()">Test API Call</button>
+    <div id="result"></div>
+    <img id="routeImage" style="max-width: 100%; display: none;" />
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            const imageElement = document.getElementById('routeImage');
+            
+            resultDiv.innerHTML = 'Testing API...';
+            
+            try {
+                console.log('Starting API test...');
+                const response = await fetch('http://localhost:5000/1001/1006');
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const blob = await response.blob();
+                console.log('Blob received:', blob.size, 'bytes');
+                console.log('Blob type:', blob.type);
+                
+                const imageUrl = URL.createObjectURL(blob);
+                imageElement.src = imageUrl;
+                imageElement.style.display = 'block';
+                
+                resultDiv.innerHTML = `Success! Image loaded (${blob.size} bytes)`;
+                console.log('Test completed successfully');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html> 
